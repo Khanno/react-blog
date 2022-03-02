@@ -9,10 +9,6 @@ const IndexScreen = ({ navigation }) => {
 
     return (
         <View>
-            <Button 
-                title="Add Post"
-                onPress={() => addBlogPost()}
-            />
             <FlatList
                 data={state}
                 keyExtractor={(blogPost) => blogPost.title}
@@ -29,6 +25,17 @@ const IndexScreen = ({ navigation }) => {
             />
         </View>
     );
+};
+
+
+IndexScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+                <Feather name="plus" size={30} />
+            </TouchableOpacity>
+        ),
+    };
 };
 
 const styles = StyleSheet.create({
